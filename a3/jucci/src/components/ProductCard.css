@@ -1,0 +1,89 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.product-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.05);
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+.product-card:hover .add-to-cart-btn {
+    transform: translateY(0);
+}
+
+/* [NEW] Wishlist button — Feature: Wishlist */
+.add-to-wishlist-btn {
+    position: absolute;
+    bottom: 42px;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.88);
+    color: var(--color-primary);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out 0.05s, background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.78rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.product-card:hover .add-to-wishlist-btn {
+    transform: translateY(0);
+}
+
+.add-to-wishlist-btn.wishlisted {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.product-info h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.product-category {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.product-price {
+    font-weight: 600;
+    margin-top: 8px;
+    display: block;
+}

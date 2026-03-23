@@ -1,0 +1,36 @@
+.app {
+  text-align: center;
+  padding: 24px;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #ecfeff 55%, #f0fdf4 100%);
+}
+
+.app h1 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin: 10px 0 24px;
+  color: #334155;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.chart-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.chart-card h3 {
+  margin-top: 4px;
+  color: #0f172a;
+}

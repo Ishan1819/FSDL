@@ -1,0 +1,85 @@
+/* ============================================================
+   RecommendedSections.css — Section headers: big, bold, clear
+   ============================================================ */
+
+.recommended-wrapper {
+    padding-top: 40px;
+}
+
+/* ---- Each section block ---- */
+.rec-section {
+    padding: 70px 0 40px;
+    border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+/* ---- Section header ---- */
+.rec-section-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    margin-bottom: 44px;
+}
+
+.rec-section-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Small uppercase label above the main heading */
+.rec-section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* Main heading — large + bold */
+.rec-section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+/* Decorative line beside the heading */
+.rec-divider {
+    display: block;
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-primary), transparent);
+    opacity: 0.12;
+    margin-bottom: 10px;
+    /* align with baseline of heading */
+}
+
+/* ---- 3-column product grid ---- */
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 900px) {
+    .rec-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rec-section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .rec-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rec-section-header h2 {
+        font-size: 1.7rem;
+    }
+}
