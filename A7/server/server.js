@@ -54,6 +54,17 @@ app.post("/api/orders", (req, res) => {
     return res.status(400).json({ message: "Cart is empty" });
   }
 
+  const hasInvalidItem = items.some(
+    (item) =>
+      typeof item.price !== "number" ||
+      typeof item.qty !== "number" ||
+      item.price < 0 ||
+      item.qty <= 0
+  );
+  if (hasInvalidItem) {
+    return res.status(400).json({ message: "Cart contains an invalid item" });
+  }
+
   const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const order = {
