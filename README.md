@@ -2,6 +2,22 @@
 
 Practical assignments for the Full Stack Development Laboratory course. Each `a1`–`a4`, `A5`–`A7` folder is a self-contained assignment with its own README.
 
+## Student Details
+
+| Field | Value |
+|-------|-------|
+| Name | Ishan Pravin Patil |
+| Roll No / PRN | 123B1B021 |
+| Class | BTech Final Year |
+| Division | A |
+| Subject | DevOps (FSDL) |
+
+## Repository Link
+https://github.com/Ishan1819/FSDL
+
+## Hosted Website Link
+https://ishan1819.github.io/FSDL/
+
 ## Assignments
 
 | # | Folder | Title | Stack |
