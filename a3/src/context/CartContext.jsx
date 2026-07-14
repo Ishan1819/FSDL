@@ -7,7 +7,13 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('jucci_cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    if (!savedCart) return [];
+    try {
+      return JSON.parse(savedCart);
+    } catch (error) {
+      console.error('Failed to parse saved cart, resetting to empty cart.', error);
+      return [];
+    }
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
 
