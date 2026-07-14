@@ -10,7 +10,7 @@ Practical assignments for the Full Stack Development Laboratory course. Each `a1
 | Roll No / PRN | 123B1B021 |
 | Class | BTech Final Year |
 | Division | A |
-| Subject | DevOps (FSDL) |
+| Subject | DevOps  |
 
 ## Repository Link
 https://github.com/Ishan1819/FSDL
