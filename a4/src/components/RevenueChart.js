@@ -12,10 +12,29 @@ const RevenueChart = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (context) => `$${context.parsed.y.toLocaleString()}`,
+        },
+      },
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: (value) => `$${value.toLocaleString()}`,
+        },
+      },
+    },
+  };
+
   return (
     <div className="chart-card">
       <h3>Revenue by Category</h3>
-      <Bar data={data} />
+      <Bar data={data} options={options} />
     </div>
   );
 };
