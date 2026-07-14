@@ -40,7 +40,11 @@ export default function ProductDetail() {
             min="1"
             max={product.stock}
             value={qty}
-            onChange={(e) => setQty(Number(e.target.value))}
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              const clamped = Math.min(Math.max(value || 1, 1), product.stock);
+              setQty(clamped);
+            }}
           />
         </div>
 
