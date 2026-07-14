@@ -5,7 +5,13 @@ const CartContext = createContext(null);
 export function CartProvider({ children }) {
   const [items, setItems] = useState(() => {
     const saved = localStorage.getItem("a7-cart");
-    return saved ? JSON.parse(saved) : [];
+    if (!saved) return [];
+    try {
+      return JSON.parse(saved);
+    } catch (error) {
+      console.error("Failed to parse saved cart, resetting to empty cart.", error);
+      return [];
+    }
   });
 
   useEffect(() => {
