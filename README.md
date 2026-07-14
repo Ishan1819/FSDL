@@ -1,6 +1,6 @@
 # DevOps - Laboratory
 
-Practical assignments for the Full Stack Development Laboratory course. Each `a1`–`a4`, `A5`–`A7` folder is a self-contained assignment with its own README.
+Practical assignments for the DevOps Laboratory course. Each `a1`–`a4`, `A5`–`A7` folder is a self-contained assignment with its own README.
 
 ## Student Details
 
