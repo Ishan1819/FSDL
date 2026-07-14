@@ -11,7 +11,13 @@ export const useWishlist = () => useContext(WishlistContext);
 export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem('jucci_wishlist');
-    return saved ? JSON.parse(saved) : [];
+    if (!saved) return [];
+    try {
+      return JSON.parse(saved);
+    } catch (error) {
+      console.error('Failed to parse saved wishlist, resetting to empty wishlist.', error);
+      return [];
+    }
   });
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
