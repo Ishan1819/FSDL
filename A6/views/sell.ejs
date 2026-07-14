@@ -24,6 +24,11 @@
       </div>
       <a href="/sell" class="btn btn-outline">Post Another Ad</a>
     <% } else { %>
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert alert-error">
+          <p><%= error %></p>
+        </div>
+      <% } %>
       <p class="muted">Fill in the details below to list your car, bike or other used item for sale.</p>
       <form class="form" method="POST" action="/sell">
         <label for="title">Item Title</label>

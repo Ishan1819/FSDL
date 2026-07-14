@@ -79,6 +79,20 @@ app.get("/sell", (req, res) => {
 
 app.post("/sell", (req, res) => {
   const { title, category, price, location, description } = req.body;
+
+  if (!title || !category || !price || !location) {
+    return res.status(400).render("sell", {
+      submitted: false,
+      error: "Please fill in title, category, price, and location before submitting.",
+      categories,
+      title,
+      category,
+      price,
+      location,
+      description
+    });
+  }
+
   // No database — the submitted ad is only echoed back, not persisted.
   res.render("sell", {
     submitted: true,
