@@ -68,6 +68,17 @@ app.get("/contact", (req, res) => {
 
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).render("contact", {
+      submitted: false,
+      error: "Please fill in all fields before submitting.",
+      name,
+      email,
+      message
+    });
+  }
+
   // No database — request is simply acknowledged back to the user.
   res.render("contact", {
     submitted: true,

@@ -25,6 +25,11 @@
           <p>Thanks, <%= name %>! Your message has been received. We'll reach out to you at <%= email %> soon.</p>
         </div>
       <% } %>
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert-error">
+          <p><%= error %></p>
+        </div>
+      <% } %>
       <form class="contact-form" method="POST" action="/contact">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required />
