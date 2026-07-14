@@ -39,7 +39,7 @@ app.get("/listings", (req, res) => {
       l.location.toLowerCase().includes(location.toLowerCase())
     );
   }
-  if (maxPrice) {
+  if (maxPrice && !Number.isNaN(Number(maxPrice))) {
     filtered = filtered.filter((l) => l.price <= Number(maxPrice));
   }
 
