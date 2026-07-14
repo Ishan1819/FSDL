@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: 'Browse Listings' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="container section">
+    <h1 class="section-title">Browse Listings</h1>
+
+    <form class="filter-bar" method="GET" action="/listings">
+      <select name="category">
+        <option value="">All Categories</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat %>" <%= selectedCategory === cat ? 'selected' : '' %>><%= cat %></option>
+        <% }) %>
+      </select>
+
+      <input
+        type="text"
+        name="location"
+        placeholder="Search by location..."
+        value="<%= searchLocation %>"
+      />
+
+      <input
+        type="number"
+        name="maxPrice"
+        placeholder="Max price (₹)"
+        value="<%= maxPrice %>"
+      />
+
+      <select name="sort">
+        <option value="">Sort by</option>
+        <option value="price-low" <%= sort === 'price-low' ? 'selected' : '' %>>Price: Low to High</option>
+        <option value="price-high" <%= sort === 'price-high' ? 'selected' : '' %>>Price: High to Low</option>
+        <option value="year-new" <%= sort === 'year-new' ? 'selected' : '' %>>Newest Year</option>
+      </select>
+
+      <button type="submit" class="btn btn-primary">Apply</button>
+      <a href="/listings" class="btn btn-outline">Reset</a>
+    </form>
+
+    <p class="muted result-count"><%= listings.length %> listing<%= listings.length === 1 ? '' : 's' %> found</p>
+
+    <% if (listings.length === 0) { %>
+      <p>No listings match your filters. Try adjusting your search.</p>
+    <% } else { %>
+      <div class="card-grid">
+        <% listings.forEach(item => { %>
+          <div class="card">
+            <div class="card-image" style="background-color: <%= item.color %>;">
+              <span><%= item.category %></span>
+            </div>
+            <div class="card-body">
+              <h3><%= item.title %></h3>
+              <p class="muted"><%= item.year %> &middot; <%= item.kmDriven.toLocaleString('en-IN') %> km &middot; <%= item.location %></p>
+              <p><%= item.shortDescription %></p>
+              <div class="card-footer">
+                <span class="price">&#8377;<%= item.price.toLocaleString('en-IN') %></span>
+                <a href="/listings/<%= item.slug %>" class="btn btn-outline">View Details</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

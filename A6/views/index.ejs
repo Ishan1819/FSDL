@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: 'Home' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Buy &amp; Sell Used Vehicles with <%= siteInfo.name %></h1>
+      <p><%= siteInfo.tagline %></p>
+      <div class="hero-actions">
+        <a href="/listings" class="btn btn-primary">Browse Listings</a>
+        <a href="/sell" class="btn btn-outline-light">Sell Your Item</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-grid">
+      <% categories.forEach(cat => { %>
+        <a href="/listings?category=<%= encodeURIComponent(cat) %>" class="category-card">
+          <%= cat %>
+        </a>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">Featured Listings</h2>
+    <div class="card-grid">
+      <% featured.forEach(item => { %>
+        <div class="card">
+          <div class="card-image" style="background-color: <%= item.color %>;">
+            <span><%= item.category %></span>
+          </div>
+          <div class="card-body">
+            <h3><%= item.title %></h3>
+            <p class="muted"><%= item.year %> &middot; <%= item.kmDriven.toLocaleString('en-IN') %> km &middot; <%= item.fuelType %></p>
+            <p><%= item.shortDescription %></p>
+            <div class="card-footer">
+              <span class="price">&#8377;<%= item.price.toLocaleString('en-IN') %></span>
+              <a href="/listings/<%= item.slug %>" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="section alt-bg">
+    <div class="container">
+      <h2 class="section-title">What Our Users Say</h2>
+      <div class="testimonial-grid">
+        <% testimonials.forEach(t => { %>
+          <div class="testimonial-card">
+            <p class="quote">&ldquo;<%= t.text %>&rdquo;</p>
+            <p class="author"><%= t.name %></p>
+            <p class="stars"><%= "★".repeat(t.rating) %><%= "☆".repeat(5 - t.rating) %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

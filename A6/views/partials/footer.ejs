@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <h3><%= siteInfo.name %></h3>
+      <p><%= siteInfo.tagline %></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><%= siteInfo.address %></p>
+      <p>Email: <%= siteInfo.email %></p>
+      <p>Phone: <%= siteInfo.phone %></p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="/listings">Browse Listings</a>
+      <a href="/sell">Sell an Item</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <%= new Date().getFullYear() %> <%= siteInfo.name %>. Founded <%= siteInfo.founded %>. All rights reserved.
+  </div>
+</footer>

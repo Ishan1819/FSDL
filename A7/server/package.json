@@ -1,0 +1,14 @@
+{
+  "name": "a7-server",
+  "version": "1.0.0",
+  "description": "Express backend for A7 e-commerce assignment. No database - all product data is hardcoded in data/products.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

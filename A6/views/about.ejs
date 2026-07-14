@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: 'About Us' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="container section narrow">
+    <h1 class="section-title">About <%= siteInfo.name %></h1>
+    <p>
+      <%= siteInfo.name %> was founded in <%= siteInfo.founded %> to make buying and
+      selling used vehicles simple, transparent and trustworthy. Whether you are
+      looking for a reliable second-hand car, a bike for your daily commute, or a
+      scooter for quick city rides, we connect buyers directly with verified sellers.
+    </p>
+    <p>
+      This particular build is a classroom assignment demonstrating a Node.js and
+      Express application with server-rendered EJS views. All listings, sellers and
+      testimonials are hardcoded in <code>data/listings.js</code> — there is no
+      database, and no data is persisted between requests.
+    </p>
+    <h2>Our Mission</h2>
+    <p>
+      To provide a straightforward, no-nonsense marketplace where every listing is
+      accurate and every seller is accountable.
+    </p>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

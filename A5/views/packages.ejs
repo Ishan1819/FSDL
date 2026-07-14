@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: 'Packages' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Our Travel Packages</h1>
+    </div>
+  </section>
+
+  <section class="container section">
+    <form class="filter-bar" method="GET" action="/packages">
+      <select name="category">
+        <option value="">All Categories</option>
+        <% categories.forEach(c => { %>
+          <option value="<%= c %>" <%= selectedCategory === c ? 'selected' : '' %>><%= c %></option>
+        <% }) %>
+      </select>
+      <input
+        type="text"
+        name="destination"
+        placeholder="Search by destination..."
+        value="<%= searchTerm %>"
+      />
+      <button type="submit" class="btn btn-primary">Filter</button>
+      <a href="/packages" class="btn btn-outline">Reset</a>
+    </form>
+
+    <% if (packages.length === 0) { %>
+      <p class="muted" style="margin-top: 2rem;">No packages match your filters. Try clearing them.</p>
+    <% } else { %>
+      <div class="card-grid">
+        <% packages.forEach(pkg => { %>
+          <div class="card">
+            <div class="card-image" style="background-color: <%= pkg.color %>;">
+              <span><%= pkg.destination %></span>
+            </div>
+            <div class="card-body">
+              <h3><%= pkg.title %></h3>
+              <p class="muted"><%= pkg.duration %> &middot; <%= pkg.category %></p>
+              <p><%= pkg.shortDescription %></p>
+              <div class="card-footer">
+                <span class="price">&#8377;<%= pkg.price.toLocaleString('en-IN') %></span>
+                <a href="/packages/<%= pkg.slug %>" class="btn btn-outline">View Details</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

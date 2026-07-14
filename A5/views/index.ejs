@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: 'Home' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Explore the World with <%= companyInfo.name %></h1>
+      <p><%= companyInfo.tagline %></p>
+      <a href="/packages" class="btn btn-primary">Browse Packages</a>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">Featured Packages</h2>
+    <div class="card-grid">
+      <% featured.forEach(pkg => { %>
+        <div class="card">
+          <div class="card-image" style="background-color: <%= pkg.color %>;">
+            <span><%= pkg.destination %></span>
+          </div>
+          <div class="card-body">
+            <h3><%= pkg.title %></h3>
+            <p class="muted"><%= pkg.duration %> &middot; <%= pkg.category %></p>
+            <p><%= pkg.shortDescription %></p>
+            <div class="card-footer">
+              <span class="price">&#8377;<%= pkg.price.toLocaleString('en-IN') %></span>
+              <a href="/packages/<%= pkg.slug %>" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="section alt-bg">
+    <div class="container">
+      <h2 class="section-title">What Our Travelers Say</h2>
+      <div class="testimonial-grid">
+        <% testimonials.forEach(t => { %>
+          <div class="testimonial-card">
+            <p class="quote">&ldquo;<%= t.quote %>&rdquo;</p>
+            <p class="author"><%= t.name %> &mdash; <span class="muted"><%= t.trip %></span></p>
+            <p class="stars"><%= "★".repeat(t.rating) %><%= "☆".repeat(5 - t.rating) %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

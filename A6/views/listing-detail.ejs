@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: item.title }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="container section">
+    <a href="/listings" class="back-link">&larr; Back to Listings</a>
+
+    <div class="detail-layout">
+      <div class="detail-image" style="background-color: <%= item.color %>;">
+        <span><%= item.category %> &middot; <%= item.images %> photos</span>
+      </div>
+
+      <div class="detail-info">
+        <h1><%= item.title %></h1>
+        <p class="price price-lg">&#8377;<%= item.price.toLocaleString('en-IN') %></p>
+        <p class="muted"><%= item.location %></p>
+
+        <div class="spec-grid">
+          <div><span class="spec-label">Year</span><span><%= item.year %></span></div>
+          <div><span class="spec-label">KM Driven</span><span><%= item.kmDriven.toLocaleString('en-IN') %> km</span></div>
+          <div><span class="spec-label">Fuel Type</span><span><%= item.fuelType %></span></div>
+          <div><span class="spec-label">Transmission</span><span><%= item.transmission %></span></div>
+          <div><span class="spec-label">Ownership</span><span><%= item.owners %></span></div>
+          <div><span class="spec-label">Condition</span><span><%= item.condition %></span></div>
+        </div>
+
+        <h2>Description</h2>
+        <p><%= item.description %></p>
+
+        <h2>Features</h2>
+        <ul class="feature-list">
+          <% item.features.forEach(f => { %>
+            <li><%= f %></li>
+          <% }) %>
+        </ul>
+
+        <div class="seller-box">
+          <h2>Seller Details</h2>
+          <p>
+            <%= item.seller.name %>
+            <% if (item.seller.verified) { %>
+              <span class="badge">Verified</span>
+            <% } %>
+          </p>
+          <p class="muted">Contact: <%= item.seller.phone %></p>
+        </div>
+      </div>
+    </div>
+
+    <% if (related.length > 0) { %>
+      <h2 class="section-title">Similar Listings</h2>
+      <div class="card-grid">
+        <% related.forEach(r => { %>
+          <div class="card">
+            <div class="card-image" style="background-color: <%= r.color %>;">
+              <span><%= r.category %></span>
+            </div>
+            <div class="card-body">
+              <h3><%= r.title %></h3>
+              <p class="muted"><%= r.year %> &middot; <%= r.kmDriven.toLocaleString('en-IN') %> km</p>
+              <div class="card-footer">
+                <span class="price">&#8377;<%= r.price.toLocaleString('en-IN') %></span>
+                <a href="/listings/<%= r.slug %>" class="btn btn-outline">View Details</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

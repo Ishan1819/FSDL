@@ -1,0 +1,14 @@
+{
+  "name": "a5-travel-agency",
+  "version": "1.0.0",
+  "description": "Simple functional travel agency website built with Node.js and Express (Assignment 5)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}

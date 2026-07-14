@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo"><%= companyInfo.name %></a>
+    <nav class="nav">
+      <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
+      <a href="/packages" class="<%= currentPath.startsWith('/packages') ? 'active' : '' %>">Packages</a>
+      <a href="/about" class="<%= currentPath === '/about' ? 'active' : '' %>">About</a>
+      <a href="/contact" class="<%= currentPath === '/contact' ? 'active' : '' %>">Contact</a>
+    </nav>
+  </div>
+</header>

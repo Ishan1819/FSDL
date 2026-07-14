@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', { pageTitle: pkg.title }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="detail-hero" style="background-color: <%= pkg.color %>;">
+    <div class="container">
+      <h1><%= pkg.title %></h1>
+      <p><%= pkg.destination %> &middot; <%= pkg.duration %></p>
+    </div>
+  </section>
+
+  <section class="container section detail-layout">
+    <div class="detail-main">
+      <h2>Overview</h2>
+      <p><%= pkg.description %></p>
+
+      <h2>Highlights</h2>
+      <ul class="bullet-list">
+        <% pkg.highlights.forEach(h => { %>
+          <li><%= h %></li>
+        <% }) %>
+      </ul>
+
+      <h2>Itinerary</h2>
+      <ol class="itinerary-list">
+        <% pkg.itinerary.forEach(item => { %>
+          <li><strong>Day <%= item.day %>:</strong> <%= item.plan %></li>
+        <% }) %>
+      </ol>
+    </div>
+
+    <aside class="detail-sidebar">
+      <div class="price-box">
+        <p class="muted">Starting from</p>
+        <p class="price-large">&#8377;<%= pkg.price.toLocaleString('en-IN') %></p>
+        <p class="muted">per person</p>
+        <p class="stars"><%= "★".repeat(Math.round(pkg.rating)) %><%= "☆".repeat(5 - Math.round(pkg.rating)) %> (<%= pkg.rating %>)</p>
+        <a href="/contact" class="btn btn-primary full-width">Enquire Now</a>
+      </div>
+    </aside>
+  </section>
+
+  <% if (related.length > 0) { %>
+    <section class="section alt-bg">
+      <div class="container">
+        <h2 class="section-title">You Might Also Like</h2>
+        <div class="card-grid">
+          <% related.forEach(pkg => { %>
+            <div class="card">
+              <div class="card-image" style="background-color: <%= pkg.color %>;">
+                <span><%= pkg.destination %></span>
+              </div>
+              <div class="card-body">
+                <h3><%= pkg.title %></h3>
+                <p class="muted"><%= pkg.duration %> &middot; <%= pkg.category %></p>
+                <div class="card-footer">
+                  <span class="price">&#8377;<%= pkg.price.toLocaleString('en-IN') %></span>
+                  <a href="/packages/<%= pkg.slug %>" class="btn btn-outline">View Details</a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+  <% } %>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
